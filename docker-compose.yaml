@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:17
+    ports:
+      - ${DATABASE_PORT}:5432
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASS}
+      - TZ=America/Asuncion
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  db:

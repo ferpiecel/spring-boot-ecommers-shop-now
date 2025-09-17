@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: shop-now
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:shopnow}
+    username: ${DB_USER:shopnow}
+    password: ${DB_PASSWORD:shopnow}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.springframework: INFO
+    com.shopnow: DEBUG
